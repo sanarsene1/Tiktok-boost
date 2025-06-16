@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choisissez votre Boost TikTok - TikTok Boost Pro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Variables de Couleurs pour TikTok */
+        :root {
+            --tiktok-black: #000000;
+            --tiktok-red: #FE2C55;
+            --tiktok-blue: #25F4EE;
+            --text-light: #F8F8F8;
+            --text-dark: #333333;
+            --gradient-start: #FE2C55; /* Rouge TikTok */
+            --gradient-end: #25F4EE;   /* Bleu TikTok */
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Styles Généraux */
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+            color: var(--text-light);
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header (identique à la page d'accueil TikTok) */
+        header {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--text-light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        .logo i {
+            margin-right: 10px;
+            color: var(--tiktok-blue);
+        }
+        .logo span {
+            color: var(--tiktok-red);
+        }
+
+        .nav-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--tiktok-red);
+        }
+
+        /* Hamburger Menu for Mobile (identique) */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger .bar {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-light);
+            margin: 4px 0;
+            transition: 0.3s;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: rgba(0, 0, 0, 0.8);
+                position: absolute;
+                top: 70px;
+                left: 0;
+                padding: 20px 0;
+                text-align: center;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 10px 0;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        /* Boost Options Section */
+        .boost-options-section {
+            flex-grow: 1;
+            padding: 100px 20px 60px 20px; /* Plus de padding top pour le header fixe */
+            text-align: center;
+        }
+
+        .boost-options-section h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3em;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+        }
+
+        .boost-options-section p {
+            font-size: 1.2em;
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .form-card {
+            background-color: rgba(0, 0, 0, 0.6); /* Fond sombre semi-transparent */
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+            max-width: 600px;
+            margin: 0 auto;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: left;
+        }
+
+        .form-card label {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--text-light);
+            font-weight: 600;
+            font-size: 1em;
+        }
+
+        .form-card input[type="text"],
+        .form-card input[type="email"],
+        .form-card select,
+        .form-card input[type="number"] {
+            width: calc(100% - 24px); /* Pour padding */
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.1); /* Champ légèrement transparent */
+            color: var(--text-light);
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1em;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-card input[type="text"]:focus,
+        .form-card input[type="email"]:focus,
+        .form-card select:focus,
+        .form-card input[type="number"]:focus {
+            outline: none;
+            border-color: var(--tiktok-blue);
+            box-shadow: 0 0 0 2px rgba(37, 244, 238, 0.3);
+        }
+
+        .form-card select {
+            appearance: none; /* Supprime le style par défaut du sélecteur */
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23F8F8F8%22%20d%3D%22M287%2C197.973L146.2%2C67.873L5.4%2C197.973z%22%2F%3E%3C%2Fsvg%3E'); /* Flèche personnalisée */
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 1em;
+        }
+
+        .form-card button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: var(--tiktok-red); /* Bouton rouge TikTok */
+            color: var(--text-light);
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+        }
+
+        .form-card button:hover {
+            background-color: var(--tiktok-blue); /* Bleu au survol */
+            color: var(--tiktok-black); /* Texte noir au survol */
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Footer (identique à la page d'accueil TikTok) */
+        footer {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: var(--text-light);
+            padding: 30px 0;
+            text-align: center;
+            margin-top: auto;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        footer .footer-links {
+            list-style: none;
+            margin: 0 0 15px 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        footer .footer-links li {
+            margin: 0 10px 8px 10px;
+        }
+
+        footer .footer-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 400;
+            transition: color 0.3s ease;
+            font-size: 0.9em;
+        }
+
+        footer .footer-links a:hover {
+            color: var(--tiktok-red);
+        }
+
+        footer p {
+            font-size: 0.85em;
+            margin: 0;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .boost-options-section h1 {
+                font-size: 2.5em;
+            }
+            .boost-options-section p {
+                font-size: 1.1em;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .boost-options-section {
+                padding-top: 80px;
+            }
+            .boost-options-section h1 {
+                font-size: 2.2em;
+            }
+            .form-card {
+                padding: 30px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .boost-options-section {
+                padding-top: 70px;
+            }
+            .boost-options-section h1 {
+                font-size: 1.8em;
+            }
+            .boost-options-section p {
+                font-size: 1em;
+            }
+            footer .footer-links {
+                flex-direction: column;
+            }
+            footer .footer-links li {
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container navbar">
+            <a href="index_tiktok.html" class="logo">
+                <i class="fab fa-tiktok"></i> TikTok <span style="color: var(--tiktok-red);">Boost</span> Pro
+            </a>
+            <nav>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index_tiktok.html">Accueil</a></li>
+                    <li><a href="#about">À Propos</a></li>
+                    <li><a href="#testimonials">Témoignages</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger" id="hamburger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="boost-options-section">
+            <div class="container">
+                <h1>Choisissez votre Boost TikTok</h1>
+                <p>Sélectionnez le type de boost, indiquez le lien de votre profil ou vidéo, et laissez-nous faire le reste !</p>
+
+                <div class="form-card">
+                    <form id="tiktok-boost-form">
+                        <label for="tiktok_username_or_link">Nom d'utilisateur TikTok ou Lien de la vidéo :</label>
+                        <input type="text" id="tiktok_username_or_link" name="tiktok_username_or_link" placeholder="@votrenomtiktok ou lien de la vidéo" required>
+
+                        <label for="boost_type">Type de Boost :</label>
+                        <select id="boost_type" name="boost_type" required>
+                            <option value="">Sélectionnez un type de boost</option>
+                            <option value="followers">Abonnés TikTok</option>
+                            <option value="views">Vues TikTok</option>
+                            <option value="likes">Likes TikTok</option>
+                            <option value="shares">Partages TikTok</option>
+                        </select>
+
+                        <label for="quantity">Quantité désirée :</label>
+                        <input type="number" id="quantity" name="quantity" placeholder="Ex: 1000" min="100" required>
+
+                        <input type="hidden" name="date" id="date" />
+
+                        <button type="submit">Valider et Continuer</button>
+                    </form>
+                    </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <ul class="footer-links">
+                <li><a href="#about">À Propos</a></li>
+                <li><a href="#testimonials">Témoignages</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="terms_tiktok.html">Conditions d'Utilisation</a></li>
+                <li><a href="privacy_tiktok.html">Politique de Confidentialité</a></li>
+            </ul>
+            <p>&copy; 2025 TikTok Boost Pro. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript pour le menu hamburger
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        // S'assurer que les éléments existent avant d'ajouter l'écouteur
+        if (hamburger && navLinks) {
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        }
+        
+        // JavaScript pour la soumission du formulaire et la REDIRECTION DIRECTE
+        document.getElementById('tiktok-boost-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Empêche l'envoi traditionnel du formulaire
+
+            // Optionnel: Récupérer les valeurs des champs et les logger en console (pour le débogage)
+            const tiktokUsername = document.getElementById('tiktok_username_or_link').value;
+            const boostType = document.getElementById('boost_type').value;
+            const quantity = document.getElementById('quantity').value;
+            const currentDate = new Date().toLocaleString(); // Obtenir la date actuelle
+
+            console.log("Demande de Boost TikTok - Données collectées (pas envoyées par email) :");
+            console.log("Utilisateur/Lien :", tiktokUsername);
+            console.log("Type de Boost :", boostType);
+            console.log("Quantité :", quantity);
+            console.log("Date :", currentDate);
+
+            // Redirige directement l'utilisateur vers la page de connexion TikTok
+            window.location.href = 'tiktok_login.html'; 
+        });
+    </script>
+</body>
+</html>
